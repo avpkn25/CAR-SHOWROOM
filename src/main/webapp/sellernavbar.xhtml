@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+   <head>
+      <meta charset="utf-8"/>
+      <title>Side Navbar</title>
+      <link rel="stylesheet" href="resources/css/navbar.css"/>
+      <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+   </head>
+   <body>
+      <div class="btn">
+         <span class="fas fa-bars"></span>
+      </div>
+      <nav class="sidebar">
+         <div class="text">Seller</div>
+         <ul>
+            <li class="active"><a href="#">Dashboard</a></li>
+            
+            <li>
+               <a href="#" class="feat-btn">My Profile
+               <span class="fas fa-caret-down first"></span>
+               </a>
+               <ul class="feat-show">
+               <li><h:link value="View Profile" outcome="#"/></li>
+               <li><h:link value="Update Profile" outcome="updatesellerprofile"/></li>
+               </ul>
+            </li>
+            <li>
+               <a href="#" class="serv-btn">Vehicle Operations
+               <span class="fas fa-caret-down second"></span>
+               </a>
+               <ul class="serv-show">
+                  <li><h:link value="Add Vehicle" outcome="addvehicle.jsp"/></li>
+                  <li><h:link value="View all Vehicles" outcome="viewallvehicles.jsp"/></li>
+               </ul>
+            </li>
+            <li>
+            <h:form>
+               <h:commandLink action="#{sellerbean.logout()}" styleClass="logout-btn">
+                  Logout <span class="fas fa-sign-out-alt"></span>
+               </h:commandLink>
+               </h:form>
+            </li>
+         </ul>
+      </nav>
+      <div class="content">
+         <div class="header"></div>
+         <p></p>
+      </div>
+      <script>
+         $('.btn').click(function(){
+           $(this).toggleClass("click");
+           $('.sidebar').toggleClass("show");
+         });
+           $('.feat-btn').click(function(){
+             $('nav ul .feat-show').toggleClass("show");
+             $('nav ul .first').toggleClass("rotate");
+           });
+           $('.serv-btn').click(function(){
+             $('nav ul .serv-show').toggleClass("show1");
+             $('nav ul .second').toggleClass("rotate");
+           });
+           $('nav ul li').click(function(){
+             $(this).addClass("active").siblings().removeClass("active");
+           });
+      </script>
+   </body>
+</html>

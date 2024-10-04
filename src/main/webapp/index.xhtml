@@ -1,0 +1,317 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html" >
+
+<h:head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous"/>
+    <link rel="stylesheet" type="text/css" href="resources/css/mainhome.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/>
+    <title>DREAM WHEELS</title>
+    <style>
+        .modal-header, .modal-footer {
+            background-color: #007bff;
+            color: white;
+            padding: 7px; /* Reduce padding to make header smaller */
+        }
+
+        .modal-body {
+            background-color: black;
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+        }
+
+        .login-box {
+            background-color: #333;
+            padding: 20px;
+            border-radius: 10px;
+            width: 200px;
+            text-align: center;
+            color: white;
+            margin: 0 10px;
+            flex-grow: 1;
+        }
+
+        .login-box h2 {
+            margin-bottom: 15px;
+        }
+
+        .login-box img {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 10px;
+        }
+
+        .login-btn {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .login-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .small-btn { /* New class for smaller buttons inside the modal */
+            padding: 5px 10px;
+            font-size: 12px;
+            position: relative;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+        }
+
+        .modal-dialog {
+            margin: auto;
+            padding: 10px;
+            max-width: 800px;
+            width: 90%;
+        }
+        .btn-close{
+        	
+        }
+    </style>
+</h:head> 
+
+<body> 
+    <header>
+        <h2><a href="index.jsf">DREAM WHEELS</a></h2>
+        <ul class="head">
+            <li><a href="index.jsf">Home</a></li>
+            <li><a href="#models">Models</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#" onclick="showModal();" >Login</a></li>
+        </ul>
+    </header>
+    
+    <section class="box">
+        <video autoplay="true" muted="true" loop="true" id="myvideo">
+            <source src="resources/videos/homecar.mp4" type="video/mp4" />
+        </video>
+        
+        <h1>find your car</h1>
+        <h3>Find your own path</h3>
+        <button onclick="showModal();">
+            Configure
+            <span class="first"></span>
+            <span class="second"></span>
+            <span class="third"></span>
+            <span class="fourth"></span>
+        </button>
+    </section>
+    
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title" align="center" >Login</h4>
+                    <button type="button" class="btn-close" onclick="hideModal();"></button>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <div class="login-box">
+                        <h2>Admin Login</h2>
+                        <div class="icon">
+                            <img src="https://t4.ftcdn.net/jpg/02/49/00/67/360_F_249006716_TYhURlp3lfNPzAj5niyYpuyCTGl60ZpJ.jpg" alt="Admin Icon"/>
+                        </div>
+                        <p>Login as an admin<br/>to manage the system.</p>
+                        <button class="login-btn small-btn" onclick="window.location.href='adminlogin.jsf';"  >Login</button>
+                    </div>
+                    <div class="login-box">
+                        <h2>Seller  &nbsp;&nbsp;&nbsp;Login</h2>
+                        <div class="icon">
+                            <img src="https://thumbs.dreamstime.com/b/outline-salesman-vector-icon-isolated-black-simple-line-element-illustration-linear-symbol-use-web-mobile-apps-logo-144288243.jpg" alt="Seller Icon"/>
+                        </div>
+                        <p>Login as a seller<br/>to manage your listings.</p>
+                        <button class="login-btn small-btn" onclick="window.location.href='sellerlogin.jsf';">Login</button>
+                    </div>
+                    <div class="login-box">
+                        <h2>Customer Login</h2>
+                        <div class="icon">
+                            <img src="https://thumbs.dreamstime.com/b/customer-icon-vector-advertising-collection-thin-line-outline-illustration-linear-symbol-use-web-mobile-apps-logo-143542775.jpg" alt="User Icon"/>
+                        </div>
+                        <p>Login as a customer<br/>to manage your vehicles.</p>
+                        <button class="login-btn small-btn" onclick="window.location.href='customerlogin.jsf';">Login</button>
+                    </div>
+                </div>
+                <!-- Modal footer -->
+                
+            </div>
+        </div>
+    </div>
+
+    <!-- GRID LAYOUT -->
+    <div id="models" class="container-fluid mt-50">
+        <h2 class="text-center" style="color: white">Few Models Include.....</h2><br />
+        <div class="row">
+            <div class="col-md-4">
+                <div class="product-card mb-30">
+                    <div class="product-badge bg-success border-default text-body">
+                        LATEST
+                    </div>
+                    <a class="product-thumb" href="#" data-abc="true">
+                        <img src="resources/images/featured2.png" alt="Product"/>
+                    </a>
+                    <div class="product-card-body">
+                        <div class="product-category">
+                            <a href="#" data-abc="true">Electric</a>
+                        </div>
+                        <h3 class="product-title">
+                            <a href="#" data-abc="true">Tesla model Y</a>
+                        </h3>
+                        <a href="#" style="color: blue">Read More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="product-card mb-30">
+                    <div class="product-badge bg-success border-default text-body">
+                        LUXURY
+                    </div>
+                    <a class="product-thumb" href="#" data-abc="true">
+                        <img src="resources/images/featured3.png" alt="Product"/>
+                    </a>
+                    <div class="product-card-body">
+                        <div class="product-category">
+                            <a href="#" data-abc="true">HYBRID</a>
+                        </div>
+                        <h3 class="product-title">
+                            <a href="#" data-abc="true">AUDI Q5</a>
+                        </h3>
+                        <a href="#" style="color: blue">Read More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="product-card mb-30">
+                    <div class="product-badge bg-success border-default text-body">
+                        PERFORMANCE
+                    </div>
+                    <a class="product-thumb" href="#" data-abc="true">
+                        <img src="resources/images/featured4.png" alt="Product"/>
+                    </a>
+                    <div class="product-card-body">
+                        <div class="product-category">
+                            <a href="#" data-abc="true">Supercar</a>
+                        </div>
+                        <h3 class="product-title">
+                            <a href="#" data-abc="true">Porsche 718</a>
+                        </h3>
+                        <a href="#" style="color: blue">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="contact" class="py-5">
+        <h2 class="text-center" style="color: white">Contact Us</h2>
+    </div>
+    <div class="w-50 m-auto" style="color: white">
+        <h:form>
+            <h:panelGrid columns="1" cellpadding="6">
+                <div class="form-group">
+                    <h:outputLabel for="name" value="Name" />
+                    <h:inputText id="name" required="true" requiredMessage="Enter Name" class="form-control" style="width:300%" value="#{adminbean.contactname}" />
+                    <h:message for="name" style="color:red" />
+                </div>
+                <div class="form-group">
+                    <h:outputLabel for="email" value="Email" />
+                    <h:inputText id="email" required="true" requiredMessage="Enter Email" class="form-control" style="width:300%" value="#{adminbean.contactemail}" />
+                    <h:message for="email" style="color:red" />
+                </div>
+                <div class="form-group">
+                    <h:outputLabel for="mobile" value="Mobile" />
+                    <h:inputText id="mobile" required="true" requiredMessage="Enter Mobile Number" class="form-control" style="width:300%" value="#{adminbean.contactmobile}" />
+                    <h:message for="mobile" style="color:red" />
+                </div>
+                <div class="form-group">
+                    <h:outputLabel for="comments" value="Comments" />
+                    <h:inputTextarea id="comments" required="true" requiredMessage="Enter Comments" class="form-control" style="width:300%" value="#{adminbean.contactcomments}" />
+                    <h:message for="comments" style="color:red" />
+                </div>
+                <h:panelGroup>
+                    <h:selectBooleanCheckbox id="agree" value="#{adminbean.contactinvalidcheck}" required="true" requiredMessage="You must agree before submitting." />
+                    <h:outputLabel for="agree" value="Agree to terms and conditions" />
+                    <h:message for="agree" style="color:red" />
+                </h:panelGroup>
+                <div class="col-12" align="center">
+                    <h:commandButton value="Submit form" class="btn btn-primary" action="#{adminbean.addContact()}" />
+                </div>
+            </h:panelGrid>
+        </h:form>
+        <br />
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col">
+                    <h4>contact</h4>
+                    <ul>
+                        <li><a href="#" class="mybt">get help</a></li>
+                        <li><a href="#" class="mybt">book a test drive</a></li>
+                        <li><a href="#" class="mybt">nearest showroom</a></li>
+                        <li><a href="#" class="mybt">service appointment</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>about us</h4>
+                    <ul>
+                        <li><a href="#" class="mybt">FAQ</a></li>
+                        <li><a href="#" class="mybt">Careers</a></li>
+                        <li><a href="#" class="mybt">our team</a></li>
+                        <li><a href="#" class="mybt">our services</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#" class="mybt">cookie policy</a></li>
+                        <li><a href="#" class="mybt">Privacy Policy</a></li>
+                        <li><a href="#" class="mybt">Legal Disclaimer/Imprint</a></li>
+                        <li><a href="#" class="mybt">book a service appointment</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>follow us</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function showModal() {
+            document.getElementById('loginModal').style.display = 'flex';
+        }
+
+        function hideModal() {
+            document.getElementById('loginModal').style.display = 'none';
+        }
+    </script>
+</body> 
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head>
+	<title>Contact Details</title>
+</h:head> 
+<body> 
+	<ui:include src="/adminnavbar.xhtml" />
+	<h3 align="center"><u>Contact Details</u></h3>
+	<center>
+		<h2>Total Employees=#{adminbean.contactcount}</h2>
+		<h:dataTable value="#{adminbean.contactlist}" var="contact" border="2" cellpadding="5" >
+			<h:column>
+				<f:facet name="header">NAME</f:facet>
+				#{contact.name}
+			</h:column>
+			<h:column>
+				<f:facet name="header">EMAIL</f:facet>
+				#{contact.email}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Mobile</f:facet>
+				#{contact.mobile}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Comments</f:facet>
+				#{contact.comments}
+			</h:column>
+			
+		</h:dataTable>
+	</center>
+</body> 
+</html>

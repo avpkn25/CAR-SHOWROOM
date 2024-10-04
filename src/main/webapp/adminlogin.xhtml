@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head>
+    <title>Admin Login</title>
+       <!-- <h:outputStylesheet library="css" value="login.css"/> -->
+   <link rel="stylesheet" type="text/css" href="resources/css/login.css" /> 
+</h:head> 
+<body> 
+    <div class="wrapper">
+        <div class="container">
+          <div class="col-left">
+            <div class="login-text">
+              <h2 align="center" >Admin</h2>
+             <div class="icon">
+                <img src="https://t4.ftcdn.net/jpg/02/49/00/67/360_F_249006716_TYhURlp3lfNPzAj5niyYpuyCTGl60ZpJ.jpg" alt="Admin Icon"/>
+            </div>
+           <p>Login as an admin<br>to manage the system.</br></p>
+           <br /><br />
+           <p>Not a Admin</p>
+              <a class="btn" href="index.jsf">Back</a>
+            </div>
+          </div>
+          <div class="col-right">
+            <div class="login-form">
+              <h2 align="center" >Login</h2>
+			<h:form >
+				<h:panelGrid columns="1" cellpadding="6">
+			
+					<h:outputLabel for="username" value="Username" />
+	                <h:inputText id="username" required="true" requiredMessage="Enter Username" value="#{adminbean.username}" />
+	                <h:message for="username" style="color:red" />
+				
+	                <h:outputLabel for="password" value="Password"/>
+	                <h:inputSecret id="password" validatorMessage="Password length must be in between 5 and 30" value="#{adminbean.password}">
+	                    <f:validateLength minimum="5" maximum="30"/>
+	                </h:inputSecret>
+	                <h:message for="password" style="color:red"/>
+	         
+                   
+                    <a href="#" class="forgot" >Forgot Password?</a>
+        			
+	                <h:commandButton id="login" value="Login" class="btn" action="#{adminbean.validateadminlogin()}" />
+	                <h:message for="login"/>
+	                
+	            </h:panelGrid>
+	            
+	        </h:form>
+	        </div>
+          </div>
+        </div>
+       
+      </div>
+</body> 
+</html>

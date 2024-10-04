@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+   <head>
+      <meta charset="utf-8"/>
+      <title>Side Navbar</title>
+      <link rel="stylesheet" href="resources/css/navbar.css"/>
+      <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+   </head>
+   <body>
+      <div class="btn">
+         <span class="fas fa-bars"></span>
+      </div>
+      <nav class="sidebar">
+         <div class="text">Customer</div>
+         <ul>
+            <li class="active"><a href="#">Dashboard</a></li>
+            <li class="active"><a href="#">My Profile</a></li>
+            
+            <li><h:link value="Show Vehicles" outcome="vehicleview.jsp"/></li>
+            <li><h:link value="My Bookings" outcome="#"/></li>
+                        <li>
+            <h:form>
+               <h:commandLink action="#{custbean.logout()}" styleClass="logout-btn">
+                  Logout <span class="fas fa-sign-out-alt"></span>
+               </h:commandLink>
+               </h:form>
+            </li>
+         </ul>
+      </nav>
+      <div class="content">
+         <div class="header"></div>
+         <p></p>
+      </div>
+      <script>
+         $('.btn').click(function(){
+           $(this).toggleClass("click");
+           $('.sidebar').toggleClass("show");
+         });
+           $('.feat-btn').click(function(){
+             $('nav ul .feat-show').toggleClass("show");
+             $('nav ul .first').toggleClass("rotate");
+           });
+           $('nav ul li').click(function(){
+             $(this).addClass("active").siblings().removeClass("active");
+           });
+      </script>
+   </body>
+</html>

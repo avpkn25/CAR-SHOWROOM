@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head>
+    <title>Add Admin</title>
+    <link rel="stylesheet" type="text/css" href="resources/css/addform.css" /> 
+</h:head> 
+<h:body>
+	<center>
+		
+        <h:form>
+            <h3 align="center" >Add Admin </h3>
+            <hr />
+            <h:panelGrid columns="3" cellpadding="6">
+                <h:outputLabel for="username" value="Enter username" />
+                <h:inputText id="username" required="true" requiredMessage="Enter Username" value="#{adminbean.username}" />
+                <h:message for="username" style="color:red" />
+                
+                <h:outputLabel for="password" value="Enter Password" />
+                <h:inputSecret id="password" required="true" requiredMessage="Enter Password" value="#{adminbean.password}" />
+                <h:message for="password" style="color:red" />
+
+                <h:outputLabel for="add" />
+                <h:commandButton id="add" class="button" value="Add" action="#{adminbean.addAdmin()}" />
+                <h:message for="add" />
+            </h:panelGrid>
+        </h:form>
+
+    </center>
+</h:body>
+</html>

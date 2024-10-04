@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head>
+	<title>Customer Login</title>
+	<link rel="stylesheet" type="text/css" href="resources/css/login.css" /> 
+</h:head> 
+<body> 
+    <div class="wrapper">
+        <div class="container">
+          <div class="col-left">
+            <div class="login-text">
+              <h2 align="center" >Customer</h2>
+            <div class="icon">
+                <img src="https://thumbs.dreamstime.com/b/customer-icon-vector-advertising-collection-thin-line-outline-illustration-linear-symbol-use-web-mobile-apps-logo-143542775.jpg" alt="User Icon"/>
+            </div>
+            <p>Login as a customer<br>to manage your vehicles.</br></p>
+           <br /><br />
+           <p>Not a Customer</p>
+              <a class="btn" href="index.jsf">Back</a>
+            </div>
+          </div>
+          <div class="col-right">
+            <div class="login-form">
+              <h2 align="center" >Login</h2>
+		<h:form>
+			<h:panelGrid columns="1" cellpadding="6">
+				<h:outputLabel for="email" value="Enter Email"/>
+				<h:inputText id="email" validatorMessage="Email must contains @ and . such as example@gmail.com" value="#{custbean.email}" >
+					<f:validateRegex pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" />
+				</h:inputText>
+				<h:message for="email" style="color:red"/>
+				
+				<h:outputLabel for="password" value="Enter Password"/>
+				<h:inputSecret id="password" validatorMessage="Password length must be in between 5 and 30" value="#{custbean.password}" >
+					<f:validateLength minimum="5" maximum="30"/>
+				</h:inputSecret>
+				<h:message for="password" style="color:red"/>
+				
+				<a href="#" class="forgot" >Forgot Password?</a>
+				
+				<h:outputLabel for="login"/>
+				<h:commandButton id="login" class="btn" value="Login" action="#{custbean.validatecustomerlogin()}"  />
+				<h:message for="login"/>
+				
+				Don't Have Account!  
+	                <a href="customerreg.jsf">SignUp</a>
+			</h:panelGrid>
+		</h:form>
+		</div>
+          </div>
+        </div>
+       
+      </div>
+</body> 
+</html>

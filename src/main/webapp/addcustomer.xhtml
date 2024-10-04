@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head>
+    <title>Add Customer</title>
+    <link rel="stylesheet" type="text/css" href="resources/css/addform.css" /> 
+</h:head> 
+<body> 
+    <h:form>
+
+        <h3 align="center">Add Customer</h3>
+        <hr />
+        <h:panelGrid columns="3" cellpadding="6">
+        
+            <h:outputLabel for="name" value="Enter Name" />
+            <h:inputText id="name" required="true" requiredMessage="Enter Name" value="#{custbean.name}" />
+            <h:message for="name" style="color:red" />
+            
+            <h:outputLabel for="gender" value="Select Gender" />
+            <h:selectOneRadio id="gender" required="true" requiredMessage="Select Gender" value="#{custbean.gender}" >
+                <f:selectItem itemLabel="Male" itemValue="MALE" />
+                <f:selectItem itemLabel="Female" itemValue="FEMALE" />
+                <f:selectItem itemLabel="Others" itemValue="OTHERS" />
+            </h:selectOneRadio>
+            <h:message for="gender" style="color:red" />
+            
+            <h:outputLabel for="email" value="Enter Email" />
+            <h:inputText id="email" required="true" requiredMessage="Enter Email" validatorMessage="Email must contain @ and . such as example@gmail.com" value="#{custbean.email}" >
+                <f:validateRegex pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" />
+            </h:inputText>
+            <h:message for="email" style="color:red" />
+            
+            <h:outputLabel for="password" value="Enter Password" />
+            <h:inputSecret id="password" required="true" requiredMessage="Enter Password" validatorMessage="Password length must be between 5 and 30" value="#{custbean.password}" >
+                <f:validateLength minimum="5" maximum="30"/>
+            </h:inputSecret>
+            <h:message for="password" style="color:red" />
+            
+            <h:outputLabel for="contact" value="Enter Contact" />
+            <h:inputText id="contact" required="true" requiredMessage="Enter Contact" validatorMessage="Contact No must contain 10 digits only" value="#{custbean.contact}" >
+                <f:validateRegex pattern="[6789][0-9]{9}" />
+            </h:inputText>
+            <h:message for="contact" style="color:red" />
+            
+            <h:outputLabel for="add" />
+            <h:commandButton id="add" class="btn" value="Submit" action="#{custbean.add1()}" />
+            <h:message for="add" />
+        </h:panelGrid>
+    </h:form>
+</body> 
+</html>

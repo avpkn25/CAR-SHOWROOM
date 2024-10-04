@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head>
+	<title>View All Admins</title>
+	<link rel="stylesheet" type="text/css" href="resources/css/viewrecords.css" />
+</h:head> 
+<body  > 
+	<ui:include src="/adminnavbar.xhtml" /> 
+	<center>
+	<h3 align="center"><u>Admin Details</u></h3>
+	
+	
+		<h2>Total Admins=#{adminbean.admincount}</h2>
+		<h:dataTable value="#{adminbean.adminlist}" var="admin" border="2" cellpadding="5" >
+			<h:column>
+				<f:facet name="header" >Username</f:facet>
+				#{admin.username}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Password</f:facet>
+				#{admin.password}
+			</h:column>
+			
+
+		</h:dataTable>
+	</center>
+</body> 
+</html>

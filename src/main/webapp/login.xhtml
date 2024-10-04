@@ -1,0 +1,219 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html" >
+
+<h:head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous"/>
+
+    <!-- Link to your custom CSS -->
+    
+	<link rel="stylesheet" type="text/css" href="resources/css/mainhome.css" />
+    <!-- Link to Font Awesome or any other CSS files, if needed -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/>
+   
+   <style>
+        loginbody {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-size: cover;
+            background-position: center;
+        }
+        .login-container {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            max-width: 1200px;
+            padding: 50px;
+        }
+        .login-box {
+            width: 300px;
+            background-color: rgba(255, 255, 255, 0); /* Transparent background */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s;
+            margin-bottom: 20px;
+            height: 350px;
+            color: #fff; /* White text color */
+        }
+        .login-box:hover {
+            transform: scale(1.05);
+        }
+        .login-box h2 {
+            margin-bottom: 10px;
+            color: #fff; /* White heading color */
+        }
+        .login-box p {
+            font-size: 0.9em;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+        .login-btn {
+            width: 50%;
+            padding: 5px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-size : large;
+            margin-top: 20
+        }
+        .login-box .login-btn:hover {
+            background-color: #b3e5fc;
+        }
+        .icon {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 20px;
+        }
+        .icon img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</h:head> 
+<body class="loginbody" >
+	<header>
+      <h2><a href="index.jsf">DREAM WHEELS</a></h2>
+      <ul class="head">
+        <li><a href="index.jsf">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="login.jsf">Login</a></li>
+      </ul>
+    </header>
+    <section class="box">
+      <video autoplay="true" muted="true" loop="true" id="myvideo">
+  		<source src="resources/videos/homecar.mp4" type="video/mp4" />
+	  </video>
+	  <div class="login-container">
+        
+        <div class="login-box">
+           
+            <h2>Admin Login</h2>
+             <div class="icon">
+                <img src="https://t4.ftcdn.net/jpg/02/49/00/67/360_F_249006716_TYhURlp3lfNPzAj5niyYpuyCTGl60ZpJ.jpg" alt="Admin Icon"/>
+            </div>
+           <p>Login as an admin<br>to manage the system.</br></p>
+            <button class="login-btn" onclick="window.location.href='adminlogin.jsf';" >Login</button>
+        </div>
+        <div class="login-box">
+            
+            <h2>Seller Login</h2>
+            <div class="icon">
+                <img src="https://thumbs.dreamstime.com/b/outline-salesman-vector-icon-isolated-black-simple-line-element-illustration-marketing-concept-editable-stroke-white-144288243.jpg" alt="Seller Icon"/>
+            </div>
+            <p>Login as a seller<br>to manage your listings.</br></p>
+            <button class="login-btn" onclick="window.location.href='sellerlogin.jsf';" >Login</button>
+        </div>
+        <div class="login-box">
+            
+            <h2>Customer Login</h2>
+            <div class="icon">
+                <img src="https://thumbs.dreamstime.com/b/customer-icon-vector-advertising-collection-thin-line-outline-illustration-linear-symbol-use-web-mobile-apps-logo-143542775.jpg" alt="User Icon"/>
+            </div>
+            <p>Login as a customer<br>to manage your vehicles.</br></p>
+            <button class="login-btn" onclick="window.location.href='customerlogin.jsf';" >Login</button>
+        </div>
+    </div>
+    </section>
+    
+    
+    <div id="contact" class="py-5">
+      <h2 class="text-center" style="color: white" >Contact Us</h2>
+    </div>
+    <div class="w-50 m-auto" style="color: white" >
+      <form action="#" method="post">
+        <div class="form-group">
+          <label>Name</label>
+          <input type="text" name="user" autocomplete="off" class="form-control" />
+        </div>
+        <div class="form-group">
+          <label>Email Id</label>
+          <input type="text" name="email" autocomplete="off" class="form-control" />
+        </div>
+        <div class="form-group">
+          <label>Mobile Number</label>
+          <input type="text" name="mobile" autocomplete="off" class="form-control" />
+        </div>
+        <div class="form-group">
+          <label>Comments </label>
+          <textarea class="form-control" name="comments"></textarea>
+        </div>
+        <div class="col-12">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required="true" />
+            <label class="form-check-label" for="invalidCheck">
+              Agree to terms and conditions
+            </label>
+            <div class="invalid-feedback">
+              You must agree before submitting.
+            </div>
+          </div>
+        </div>
+        <div class="col-12" align="center" >
+          <button class="btn btn-primary" type="submit">Submit form</button>
+        </div>
+      </form>
+      <br />
+    </div>
+    <!-- FOOTER STARTS HERE -->
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="footer-col">
+            <h4>contact</h4>
+            <ul>
+              <li><a href="#" class="mybt" >get help</a></li>
+              <li><a href="#" class="mybt" >book a test drive</a></li>
+              <li><a href="#" class="mybt" >nearest showroom</a></li>
+              <li><a href="#" class="mybt" >service appointment</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4>about us</h4>
+            <ul>
+              <li><a href="#" class="mybt" >FAQ</a></li>
+              <li><a href="#" class="mybt" >Careers</a></li>
+              <li><a href="#" class="mybt" >our team</a></li>
+              <li><a href="#" class="mybt" >our services</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4>Legal</h4>
+            <ul>
+              <li><a href="#" class="mybt" >cookie policy</a></li>
+              <li><a href="#" class="mybt" >Privacy Policy</a></li>
+              <li><a href="#" class="mybt" >Legal Disclaimer/Imprint</a></li>
+              <li><a href="#" class="mybt" >book a service appointment</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4>follow us</h4>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+     
+</body>
+</html>

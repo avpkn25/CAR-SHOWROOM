@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head>
+	<title>View All Customers</title>
+	<link rel="stylesheet" type="text/css" href="resources/css/viewrecords.css" />
+</h:head> 
+<body  > 
+	<ui:include src="/adminnavbar.xhtml" /> 
+	<center>
+	<h3 align="center"><u>Customer Details</u></h3>
+	
+	
+		<h2>Total Customers=#{adminbean.customercount}</h2>
+		<h:dataTable value="#{adminbean.customerlist}" var="customer" border="2" cellpadding="5" >
+			<h:column>
+				<f:facet name="header" >Name</f:facet>
+				#{customer.name}
+			</h:column>
+			<h:column>
+				<f:facet name="header" >Gender</f:facet>
+				#{customer.gender}
+			</h:column>
+			<h:column>
+				<f:facet name="header" >Email</f:facet>
+				#{customer.email}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Password</f:facet>
+				#{customer.password}
+			</h:column>
+			<h:column>
+				<f:facet name="header" >Contact</f:facet>
+				#{customer.contact}
+			</h:column>
+			<h:column>
+				<f:facet name="header">ACTION</f:facet>
+				<h:form>
+					<h:commandLink action="#{adminbean}" value="Delete" />
+				</h:form>
+			</h:column>
+		</h:dataTable>
+	</center>
+</body> 
+</html>
